@@ -8,4 +8,5 @@ public class PatientPostDto {
     private String gender;
     private String firstName;
     private String lastName;
+    private Long accountId;
 }

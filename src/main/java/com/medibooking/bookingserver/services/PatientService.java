@@ -24,16 +24,16 @@ public class PatientService {
         return patientMapper.fromEntity(patientRepository.save(patientEntity));
     }
 
-    @RabbitListener(queues = "PatientSignUp")
-    public void createPatientOnSignUp(com.medibooking.messages.Patient patient){
-        Patient dbPatient = new Patient();
-        dbPatient.setAccountId(patient.getAccountId());
-        dbPatient.setAge(patient.getAge());
-        dbPatient.setFirstName(patient.getFirstName());
-        dbPatient.setLastName(patient.getLastName());
-        dbPatient.setGender(patient.getGender());
-        patientRepository.save(dbPatient);
-    }
+//    @RabbitListener(queues = "PatientSignUp")
+//    public void createPatientOnSignUp(com.medibooking.messages.Patient patient){
+//        Patient dbPatient = new Patient();
+//        dbPatient.setAccountId(patient.getAccountId());
+//        dbPatient.setAge(patient.getAge());
+//        dbPatient.setFirstName(patient.getFirstName());
+//        dbPatient.setLastName(patient.getLastName());
+//        dbPatient.setGender(patient.getGender());
+//        patientRepository.save(dbPatient);
+//    }
 
     public PatientGetDto modify(Long patientId, PatientPutDto patientPutDto) {
         Patient patient = new Patient();
