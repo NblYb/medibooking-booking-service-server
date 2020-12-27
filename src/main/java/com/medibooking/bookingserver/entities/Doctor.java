@@ -31,6 +31,7 @@ public class Doctor {
     @Column(name = "description", nullable = false)
     private String description;
 
+    @Column(name = "account_id", nullable = false)
     private Long accountId;
 
     @ManyToMany

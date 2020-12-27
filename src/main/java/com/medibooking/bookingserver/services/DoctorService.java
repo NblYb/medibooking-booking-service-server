@@ -30,6 +30,7 @@ public class DoctorService {
         Doctor doctor = new Doctor();
         doctorMapper.copy(doctorPutDto, doctor);
         doctor.setId(doctorId);
+        doctor.setAccountId(findDoctorAccountIdByDoctorId(doctorId));
         return doctorMapper.fromEntity(doctorRepository.save(doctor));
     }
 
@@ -38,6 +39,11 @@ public class DoctorService {
         return doctorRepository.findAll().stream()
                 .map(doctorMapper::fromEntity)
                 .collect(Collectors.toList());
+    }
+
+    public Long findDoctorAccountIdByDoctorId(Long doctorId){
+        Doctor doctor = doctorRepository.getOne(doctorId);
+        return doctor.getAccountId();
     }
 
     public void delete(Long id) {
