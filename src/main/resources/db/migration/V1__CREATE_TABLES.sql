@@ -14,6 +14,7 @@ create table patients(
     gender varchar(10),
     first_name varchar(100),
     last_name varchar(100),
+    email varchar(200),
     account_id int
 );
 

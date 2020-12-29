@@ -27,6 +27,9 @@ public class Patient {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
+    @Column(name = "email", nullable = false)
+    private String email;
+
     @Column(name = "account_id", nullable = false)
     private Long accountId;
 
