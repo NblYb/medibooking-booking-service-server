@@ -28,14 +28,12 @@ public class SpecializationController {
     private final SpecializationService specializationService;
 
     @PostMapping
-    @PreAuthorize("hasAnyRole('ROLE_DOCTOR','ROLE_PATIENT')")
     public ResponseEntity<SpecializationGetDto> add(@RequestBody SpecializationPostDto spePostDto) {
         SpecializationGetDto speGetDto = specializationService.createSpe(spePostDto);
         return ResponseEntity.ok(speGetDto);
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyRole('ROLE_DOCTOR','ROLE_PATIENT')")
     public ResponseEntity<List<SpecializationGetDto>> find() {
         List<SpecializationGetDto> list = specializationService.getAllSpe();
         return ResponseEntity.ok(list);
