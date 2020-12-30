@@ -50,8 +50,8 @@ public class AppointmentControllerTest {
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentListWhenGetAllAppointments() throws Exception {
-        LocalDate testDate = LocalDate.now();
-        LocalTime testTime = LocalTime.now();
+        final LocalDate testDate = LocalDate.now();
+        final LocalTime testTime = LocalTime.now();
         AppointmentGetDto appointmentGetDto = utilities.buildAppointmentGetDto(1L,
                 testDate,
                 testTime,
@@ -86,8 +86,8 @@ public class AppointmentControllerTest {
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentWhenGivenValidAppointmentId() throws Exception {
-        LocalDate testDate = LocalDate.now();
-        LocalTime testTime = LocalTime.now();
+        final LocalDate testDate = LocalDate.now();
+        final LocalTime testTime = LocalTime.now();
         AppointmentGetDto appointmentGetDto = utilities.buildAppointmentGetDto(1L,
                 testDate,
                 testTime,
@@ -122,8 +122,8 @@ public class AppointmentControllerTest {
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentWhenGivenValidPatientId() throws Exception {
-        LocalDate testDate = LocalDate.now();
-        LocalTime testTime = LocalTime.now();
+        final LocalDate testDate = LocalDate.now();
+        final LocalTime testTime = LocalTime.now();
         AppointmentGetDto appointmentGetDto = utilities.buildAppointmentGetDto(1L,
                 testDate,
                 testTime,
@@ -157,8 +157,8 @@ public class AppointmentControllerTest {
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentWhenGivenValidDoctorId() throws Exception {
-        LocalDate testDate = LocalDate.now();
-        LocalTime testTime = LocalTime.now();
+        final LocalDate testDate = LocalDate.now();
+        final LocalTime testTime = LocalTime.now();
         AppointmentGetDto appointmentGetDto = utilities.buildAppointmentGetDto(1L,
                 testDate,
                 testTime,
@@ -192,8 +192,8 @@ public class AppointmentControllerTest {
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentWhenGivenValidPatientAndDate() throws Exception {
-        LocalDate testDate = LocalDate.now();
-        LocalTime testTime = LocalTime.now();
+        final LocalDate testDate = LocalDate.now();
+        final LocalTime testTime = LocalTime.now();
         AppointmentGetDto appointmentGetDto = utilities.buildAppointmentGetDto(1L,
                 testDate,
                 testTime,
@@ -227,8 +227,8 @@ public class AppointmentControllerTest {
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentWhenGivenValidDoctorAndDate() throws Exception {
-        LocalDate testDate = LocalDate.now();
-        LocalTime testTime = LocalTime.now();
+        final LocalDate testDate = LocalDate.now();
+        final LocalTime testTime = LocalTime.now();
         AppointmentGetDto appointmentGetDto = utilities.buildAppointmentGetDto(1L,
                 testDate,
                 testTime,
@@ -262,8 +262,8 @@ public class AppointmentControllerTest {
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentWhenGivenValidDate() throws Exception {
-        LocalDate testDate = LocalDate.now();
-        LocalTime testTime = LocalTime.now();
+        final LocalDate testDate = LocalDate.now();
+        final LocalTime testTime = LocalTime.now();
         AppointmentGetDto appointmentGetDto = utilities.buildAppointmentGetDto(1L,
                 testDate,
                 testTime,
@@ -297,8 +297,8 @@ public class AppointmentControllerTest {
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentWhenAddNewAppointment() throws Exception {
-        LocalDate testDate = LocalDate.now();
-        LocalTime testTime = LocalTime.now();
+        final LocalDate testDate = LocalDate.now();
+        final LocalTime testTime = LocalTime.now();
         AppointmentGetDto appointmentGetDto = utilities.buildAppointmentGetDto(1L,
                 testDate,
                 testTime,
@@ -341,8 +341,8 @@ public class AppointmentControllerTest {
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentWhenUpdateNewAppointment() throws Exception {
-        LocalDate testDate = LocalDate.now();
-        LocalTime testTime = LocalTime.now();
+        final LocalDate testDate = LocalDate.now();
+        final LocalTime testTime = LocalTime.now();
         AppointmentGetDto appointmentGetDto = utilities.buildAppointmentGetDto(1L,
                 testDate,
                 testTime,
