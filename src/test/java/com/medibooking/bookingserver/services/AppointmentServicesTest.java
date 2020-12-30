@@ -37,10 +37,10 @@ public class AppointmentServicesTest {
     @Autowired
     private AppointmentMapper appointmentMapper;
 
-    @Autowired
+    @Autowired(required = false)
     private PatientRepository patientRepository;
 
-    @Autowired
+    @Autowired(required = false)
     private DoctorRepository doctorRepository;
 
     @Autowired
