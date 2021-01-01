@@ -22,10 +22,11 @@
 * Application support H2 in-mem DB and Postgres DB, by default postgres DB is being used. If you want to use H2 in-mem DB, application-h2.properties shall be used.
 * Create an appointment
 * Cancel an appointment
-* Create an patient
 * Get all the appointments of a patient given doctor name and date
 * Get all the appointments of a doctor or a patient
+* Create an patient
 * Get doctor/patient by his/her ID
+* Change doctor/patient personal info
 * Get all the doctors
 * Get all the languages
 * Get all the specialization
