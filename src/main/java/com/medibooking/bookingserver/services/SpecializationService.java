@@ -17,15 +17,14 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class SpecializationService {
+
     @Autowired
     private final SpecializationRepository speRepository;
     private final SpecializationMapper speMapper;
 
     public SpecializationGetDto createSpe(SpecializationPostDto spePostDto) {
         Specialization speEntity = speMapper.toEntity(spePostDto);
-
         return speMapper.fromEntity(speRepository.save(speEntity));
-
     }
 
     public SpecializationGetDto modify(Long speId, SpecializationPutDto spePutDto) {

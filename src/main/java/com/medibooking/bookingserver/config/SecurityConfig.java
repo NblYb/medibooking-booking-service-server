@@ -1,7 +1,6 @@
 package com.medibooking.bookingserver.config;
 
 import com.google.common.collect.ImmutableList;
-import com.medibooking.bookingserver.BookingServerApplication;
 import com.medibooking.bookingserver.jwt.JwtConfig;
 import com.medibooking.bookingserver.jwt.JwtTokenVerifier;
 import lombok.RequiredArgsConstructor;
@@ -41,7 +40,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated();
     }
-
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {

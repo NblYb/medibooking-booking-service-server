@@ -47,15 +47,18 @@ public class AppointmentControllerTest {
     @Autowired
     private Utilities utilities;
 
+    private String testStartingTime = "17:50:00";
+
+    private String testEndingTime = "18:05:00";
+
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentListWhenGetAllAppointments() throws Exception {
-        LocalDate testDate = LocalDate.now();
-        LocalTime testTime = LocalTime.now();
+        final LocalDate testDate = LocalDate.now();
         AppointmentGetDto appointmentGetDto = utilities.buildAppointmentGetDto(1L,
                 testDate,
-                testTime,
-                testTime,
+                LocalTime.parse(testStartingTime),
+                LocalTime.parse(testEndingTime),
                 "test",
                 false,
                 2L,
@@ -70,8 +73,8 @@ public class AppointmentControllerTest {
                 .andExpect(jsonPath("$.[0]").exists())
                 .andExpect(jsonPath("$.[0].id").value(1L))
                 .andExpect(jsonPath("$.[0].date").value(testDate.toString()))
-                .andExpect(jsonPath("$.[0].startingTime").value(testTime.toString().substring(0, (testTime.toString().length() - 2))))
-                .andExpect(jsonPath("$.[0].endingTime").value(testTime.toString().substring(0, (testTime.toString().length() - 2))))
+                .andExpect(jsonPath("$.[0].startingTime").value(testStartingTime))
+                .andExpect(jsonPath("$.[0].endingTime").value(testEndingTime))
                 .andExpect(jsonPath("$.[0].notes").value("test"))
                 .andExpect(jsonPath("$.[0].isCancelled").value(false))
                 .andExpect(jsonPath("$.[0].patient").value(2L))
@@ -86,12 +89,11 @@ public class AppointmentControllerTest {
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentWhenGivenValidAppointmentId() throws Exception {
-        LocalDate testDate = LocalDate.now();
-        LocalTime testTime = LocalTime.now();
+        final LocalDate testDate = LocalDate.now();
         AppointmentGetDto appointmentGetDto = utilities.buildAppointmentGetDto(1L,
                 testDate,
-                testTime,
-                testTime,
+                LocalTime.parse(testStartingTime),
+                LocalTime.parse(testEndingTime),
                 "test",
                 false,
                 2L,
@@ -106,8 +108,8 @@ public class AppointmentControllerTest {
                 .andExpect(jsonPath("$").exists())
                 .andExpect(jsonPath("$.id").value(1L))
                 .andExpect(jsonPath("$.date").value(testDate.toString()))
-                .andExpect(jsonPath("$.startingTime").value(testTime.toString().substring(0, (testTime.toString().length() - 2))))
-                .andExpect(jsonPath("$.endingTime").value(testTime.toString().substring(0, (testTime.toString().length() - 2))))
+                .andExpect(jsonPath("$.startingTime").value(testStartingTime))
+                .andExpect(jsonPath("$.endingTime").value(testEndingTime))
                 .andExpect(jsonPath("$.notes").value("test"))
                 .andExpect(jsonPath("$.isCancelled").value(false))
                 .andExpect(jsonPath("$.patient").value(2L))
@@ -122,12 +124,11 @@ public class AppointmentControllerTest {
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentWhenGivenValidPatientId() throws Exception {
-        LocalDate testDate = LocalDate.now();
-        LocalTime testTime = LocalTime.now();
+        final LocalDate testDate = LocalDate.now();
         AppointmentGetDto appointmentGetDto = utilities.buildAppointmentGetDto(1L,
                 testDate,
-                testTime,
-                testTime,
+                LocalTime.parse(testStartingTime),
+                LocalTime.parse(testEndingTime),
                 "test",
                 false,
                 2L,
@@ -142,8 +143,8 @@ public class AppointmentControllerTest {
                 .andExpect(jsonPath("$.[0]").exists())
                 .andExpect(jsonPath("$.[0].id").value(1L))
                 .andExpect(jsonPath("$.[0].date").value(testDate.toString()))
-                .andExpect(jsonPath("$.[0].startingTime").value(testTime.toString().substring(0, (testTime.toString().length() - 2))))
-                .andExpect(jsonPath("$.[0].endingTime").value(testTime.toString().substring(0, (testTime.toString().length() - 2))))
+                .andExpect(jsonPath("$.[0].startingTime").value(testStartingTime))
+                .andExpect(jsonPath("$.[0].endingTime").value(testEndingTime))
                 .andExpect(jsonPath("$.[0].notes").value("test"))
                 .andExpect(jsonPath("$.[0].isCancelled").value(false))
                 .andExpect(jsonPath("$.[0].patient").value(2L))
@@ -157,12 +158,11 @@ public class AppointmentControllerTest {
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentWhenGivenValidDoctorId() throws Exception {
-        LocalDate testDate = LocalDate.now();
-        LocalTime testTime = LocalTime.now();
+        final LocalDate testDate = LocalDate.now();
         AppointmentGetDto appointmentGetDto = utilities.buildAppointmentGetDto(1L,
                 testDate,
-                testTime,
-                testTime,
+                LocalTime.parse(testStartingTime),
+                LocalTime.parse(testEndingTime),
                 "test",
                 false,
                 2L,
@@ -177,8 +177,8 @@ public class AppointmentControllerTest {
                 .andExpect(jsonPath("$.[0]").exists())
                 .andExpect(jsonPath("$.[0].id").value(1L))
                 .andExpect(jsonPath("$.[0].date").value(testDate.toString()))
-                .andExpect(jsonPath("$.[0].startingTime").value(testTime.toString().substring(0, (testTime.toString().length() - 2))))
-                .andExpect(jsonPath("$.[0].endingTime").value(testTime.toString().substring(0, (testTime.toString().length() - 2))))
+                .andExpect(jsonPath("$.[0].startingTime").value(testStartingTime))
+                .andExpect(jsonPath("$.[0].endingTime").value(testEndingTime))
                 .andExpect(jsonPath("$.[0].notes").value("test"))
                 .andExpect(jsonPath("$.[0].isCancelled").value(false))
                 .andExpect(jsonPath("$.[0].patient").value(2L))
@@ -192,12 +192,11 @@ public class AppointmentControllerTest {
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentWhenGivenValidPatientAndDate() throws Exception {
-        LocalDate testDate = LocalDate.now();
-        LocalTime testTime = LocalTime.now();
+        final LocalDate testDate = LocalDate.now();
         AppointmentGetDto appointmentGetDto = utilities.buildAppointmentGetDto(1L,
                 testDate,
-                testTime,
-                testTime,
+                LocalTime.parse(testStartingTime),
+                LocalTime.parse(testEndingTime),
                 "test",
                 false,
                 2L,
@@ -212,8 +211,8 @@ public class AppointmentControllerTest {
                 .andExpect(jsonPath("$.[0]").exists())
                 .andExpect(jsonPath("$.[0].id").value(1L))
                 .andExpect(jsonPath("$.[0].date").value(testDate.toString()))
-                .andExpect(jsonPath("$.[0].startingTime").value(testTime.toString().substring(0, (testTime.toString().length() - 2))))
-                .andExpect(jsonPath("$.[0].endingTime").value(testTime.toString().substring(0, (testTime.toString().length() - 2))))
+                .andExpect(jsonPath("$.[0].startingTime").value(testStartingTime))
+                .andExpect(jsonPath("$.[0].endingTime").value(testEndingTime))
                 .andExpect(jsonPath("$.[0].notes").value("test"))
                 .andExpect(jsonPath("$.[0].isCancelled").value(false))
                 .andExpect(jsonPath("$.[0].patient").value(2L))
@@ -227,12 +226,11 @@ public class AppointmentControllerTest {
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentWhenGivenValidDoctorAndDate() throws Exception {
-        LocalDate testDate = LocalDate.now();
-        LocalTime testTime = LocalTime.now();
+        final LocalDate testDate = LocalDate.now();
         AppointmentGetDto appointmentGetDto = utilities.buildAppointmentGetDto(1L,
                 testDate,
-                testTime,
-                testTime,
+                LocalTime.parse(testStartingTime),
+                LocalTime.parse(testEndingTime),
                 "test",
                 false,
                 2L,
@@ -247,8 +245,8 @@ public class AppointmentControllerTest {
                 .andExpect(jsonPath("$.[0]").exists())
                 .andExpect(jsonPath("$.[0].id").value(1L))
                 .andExpect(jsonPath("$.[0].date").value(testDate.toString()))
-                .andExpect(jsonPath("$.[0].startingTime").value(testTime.toString().substring(0, (testTime.toString().length() - 2))))
-                .andExpect(jsonPath("$.[0].endingTime").value(testTime.toString().substring(0, (testTime.toString().length() - 2))))
+                .andExpect(jsonPath("$.[0].startingTime").value(testStartingTime))
+                .andExpect(jsonPath("$.[0].endingTime").value(testEndingTime))
                 .andExpect(jsonPath("$.[0].notes").value("test"))
                 .andExpect(jsonPath("$.[0].isCancelled").value(false))
                 .andExpect(jsonPath("$.[0].patient").value(2L))
@@ -262,12 +260,11 @@ public class AppointmentControllerTest {
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentWhenGivenValidDate() throws Exception {
-        LocalDate testDate = LocalDate.now();
-        LocalTime testTime = LocalTime.now();
+        final LocalDate testDate = LocalDate.now();
         AppointmentGetDto appointmentGetDto = utilities.buildAppointmentGetDto(1L,
                 testDate,
-                testTime,
-                testTime,
+                LocalTime.parse(testStartingTime),
+                LocalTime.parse(testEndingTime),
                 "test",
                 false,
                 2L,
@@ -282,8 +279,8 @@ public class AppointmentControllerTest {
                 .andExpect(jsonPath("$.[0]").exists())
                 .andExpect(jsonPath("$.[0].id").value(1L))
                 .andExpect(jsonPath("$.[0].date").value(testDate.toString()))
-                .andExpect(jsonPath("$.[0].startingTime").value(testTime.toString().substring(0, (testTime.toString().length() - 2))))
-                .andExpect(jsonPath("$.[0].endingTime").value(testTime.toString().substring(0, (testTime.toString().length() - 2))))
+                .andExpect(jsonPath("$.[0].startingTime").value(testStartingTime))
+                .andExpect(jsonPath("$.[0].endingTime").value(testEndingTime))
                 .andExpect(jsonPath("$.[0].notes").value("test"))
                 .andExpect(jsonPath("$.[0].isCancelled").value(false))
                 .andExpect(jsonPath("$.[0].patient").value(2L))
@@ -297,12 +294,11 @@ public class AppointmentControllerTest {
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentWhenAddNewAppointment() throws Exception {
-        LocalDate testDate = LocalDate.now();
-        LocalTime testTime = LocalTime.now();
+        final LocalDate testDate = LocalDate.now();
         AppointmentGetDto appointmentGetDto = utilities.buildAppointmentGetDto(1L,
                 testDate,
-                testTime,
-                testTime,
+                LocalTime.parse(testStartingTime),
+                LocalTime.parse(testEndingTime),
                 "test",
                 false,
                 2L,
@@ -312,8 +308,8 @@ public class AppointmentControllerTest {
                 "testDoctor",
                 "testDoctor");
         AppointmentPostDto appointmentPostDto = utilities.buildAppointmentPostDto(testDate,
-                testTime,
-                testTime,
+                LocalTime.parse(testStartingTime),
+                LocalTime.parse(testEndingTime),
                 "test",
                 false,
                 2L,
@@ -326,8 +322,8 @@ public class AppointmentControllerTest {
                 .andExpect(jsonPath("$").exists())
                 .andExpect(jsonPath("$.id").value(1L))
                 .andExpect(jsonPath("$.date").value(testDate.toString()))
-                .andExpect(jsonPath("$.startingTime").value(testTime.toString().substring(0, (testTime.toString().length() - 2))))
-                .andExpect(jsonPath("$.endingTime").value(testTime.toString().substring(0, (testTime.toString().length() - 2))))
+                .andExpect(jsonPath("$.startingTime").value(testStartingTime))
+                .andExpect(jsonPath("$.endingTime").value(testEndingTime))
                 .andExpect(jsonPath("$.notes").value("test"))
                 .andExpect(jsonPath("$.isCancelled").value(false))
                 .andExpect(jsonPath("$.patient").value(2L))
@@ -341,12 +337,13 @@ public class AppointmentControllerTest {
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentWhenUpdateNewAppointment() throws Exception {
-        LocalDate testDate = LocalDate.now();
-        LocalTime testTime = LocalTime.now();
+        final LocalDate testDate = LocalDate.now();
+        String newTestStartingTime = "12:00:00";
+        String newTestEndingTime = "12:15:00";
         AppointmentGetDto appointmentGetDto = utilities.buildAppointmentGetDto(1L,
                 testDate,
-                testTime,
-                testTime,
+                LocalTime.parse(newTestStartingTime),
+                LocalTime.parse(newTestEndingTime),
                 "test",
                 false,
                 2L,
@@ -355,10 +352,11 @@ public class AppointmentControllerTest {
                 3L,
                 "testDoctor",
                 "testDoctor");
+
         AppointmentPutDto appointmentPutDto = utilities.buildAppointmentPutDto(1L,
                 testDate,
-                testTime,
-                testTime,
+                LocalTime.parse(testStartingTime),
+                LocalTime.parse(testEndingTime),
                 "test",
                 false,
                 2L,
@@ -369,8 +367,8 @@ public class AppointmentControllerTest {
                 .andExpect(jsonPath("$").exists())
                 .andExpect(jsonPath("$.id").value(1L))
                 .andExpect(jsonPath("$.date").value(testDate.toString()))
-                .andExpect(jsonPath("$.startingTime").value(testTime.toString().substring(0, (testTime.toString().length() - 2))))
-                .andExpect(jsonPath("$.endingTime").value(testTime.toString().substring(0, (testTime.toString().length() - 2))))
+                .andExpect(jsonPath("$.startingTime").value(newTestStartingTime))
+                .andExpect(jsonPath("$.endingTime").value(newTestEndingTime))
                 .andExpect(jsonPath("$.notes").value("test"))
                 .andExpect(jsonPath("$.isCancelled").value(false))
                 .andExpect(jsonPath("$.patient").value(2L))

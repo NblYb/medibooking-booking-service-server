@@ -46,15 +46,15 @@ public class DoctorService {
         return doctor.getAccountId();
     }
 
-    public void delete(Long id) {
-        doctorRepository.deleteById(id);
-    }
-
     public DoctorGetDto findDoctorById(Long id) {
         return doctorMapper.fromEntity(doctorRepository.getOne(id));
     }
 
     public DoctorGetDto findDoctorByAccountId(Long accountId) {
         return doctorMapper.fromEntity(doctorRepository.findByAccountId(accountId));
+    }
+
+    public void delete(Long id) {
+        doctorRepository.deleteById(id);
     }
 }

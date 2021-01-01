@@ -7,7 +7,6 @@ import com.medibooking.bookingserver.entities.Patient;
 import com.medibooking.bookingserver.mappers.PatientMapper;
 import com.medibooking.bookingserver.repositories.PatientRepository;
 import lombok.RequiredArgsConstructor;
-//import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,17 +22,6 @@ public class PatientService {
         Patient patientEntity = patientMapper.toEntity(patientPostDto);
         return patientMapper.fromEntity(patientRepository.save(patientEntity));
     }
-
-//    @RabbitListener(queues = "PatientSignUp")
-//    public void createPatientOnSignUp(com.medibooking.messages.Patient patient){
-//        Patient dbPatient = new Patient();
-//        dbPatient.setAccountId(patient.getAccountId());
-//        dbPatient.setAge(patient.getAge());
-//        dbPatient.setFirstName(patient.getFirstName());
-//        dbPatient.setLastName(patient.getLastName());
-//        dbPatient.setGender(patient.getGender());
-//        patientRepository.save(dbPatient);
-//    }
 
     public PatientGetDto modify(Long patientId, PatientPutDto patientPutDto) {
         Patient patient = new Patient();
