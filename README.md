@@ -10,6 +10,7 @@
 * H2 in-memory DB
 * MockMvc
 * Flyway
+* Rabbitmq
 
 ## Topics
 1. [How to run this application](#How-to-run-this-application)
@@ -30,6 +31,7 @@
 * Get all the doctors
 * Get all the languages
 * Get all the specialization
+* Once the appointment booking completed, the appointment detail will be sent to a Rabbitmq queue for email service to retrieve.
 
 ## How to run this application
 
