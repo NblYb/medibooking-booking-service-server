@@ -42,7 +42,7 @@
 
 ## Database structure
 
-![Database-strucutre](booking-service-db-structure.jpg "Database-strucutre")
+![Database-strucutre](booking-service-db-structure.png "Database-strucutre")
 
 ## Advantages of this application
 * Hibernate builds the entity layer to connect PostgreSQL database server
