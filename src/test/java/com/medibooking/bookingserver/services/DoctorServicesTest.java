@@ -52,12 +52,6 @@ public class DoctorServicesTest {
         assertEquals(2, returnedDoctorList.size());
     }
 
-//    @Test
-//    public void shouldThrowExceptionGivenInvalidAccount() {
-//        when(doctorRepository.getOne(any())).thenReturn(Optional.empty());
-//        assertThrows(InvalidAccountException.class,() -> doctorService.findDoctorById(5555L));
-//    }
-
     @Test
     public void NumberOfDoctorsShouldBeLessAfterDeletion() {
         doctorService.delete(306L);

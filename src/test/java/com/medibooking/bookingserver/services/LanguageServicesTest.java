@@ -44,7 +44,6 @@ public class LanguageServicesTest {
     public void shouldReturnLanguageListGivenLanguagesExist() {
         Language language1 = utility.buildLanguage("English");
         Language language2 = utility.buildLanguage("Chinese");
-
         when(languageRepository.findAll()).thenReturn(List.of(language1, language2));
         List<LanguageGetDto> returnedLanguageList = languageService.getAllLanguages();
         assertNotNull(returnedLanguageList);

@@ -39,17 +39,6 @@ public class PatientServicesTest {
         patientService = new PatientService(patientRepository, patientMapper);
     }
 
-//    @Test
-//    public void shouldReturnPatientListGivenPatientsExist() {
-//        Patient patient1 = utility.buildPatient(30,"male","Jack","Ali");
-//        Patient patient2 = utility.buildPatient(35,"female","Rita","Jo");
-//
-//        when(patientRepository.findAll()).thenReturn(List.of(patient1, patient2));
-//        List<Patient> returnedPatientList = patientService.getAllPatients();
-//        assertNotNull(returnedPatientList);
-//        assertEquals(2, returnedPatientList.size());
-//    }
-
     @Test
     public void shouldReturnPatientGivenPatientId() {
         Patient patient1 = utility.buildPatientWithId(30L, 35, "male","Jack","io");
@@ -70,7 +59,6 @@ public class PatientServicesTest {
 
     @Test
     public void NumberOfPatientsShouldBeLessAfterDeletion() {
-
         patientService.delete(306L);
         verify(patientRepository).deleteById(306L);
     }

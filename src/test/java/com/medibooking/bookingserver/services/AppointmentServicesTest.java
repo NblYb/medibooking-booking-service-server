@@ -56,12 +56,10 @@ public class AppointmentServicesTest {
 
     @Test
     public void shouldReturnAppointmentListGivenAppointmentsExist() {
-
         Appointment appointment1 = utility.buildAppointment(34L,LocalDate.now() , LocalTime.now(),
                 LocalTime.now(),"aa",false);
         Appointment appointment2 = utility.buildAppointment(345L,LocalDate.now() , LocalTime.now(),
                 LocalTime.now(),"aa",false);
-
         when(appointmentRepository.findAll()).thenReturn(List.of(appointment1, appointment2));
         List<AppointmentGetDto> returnedAppointmentList = appointmentService.getAll();
         assertNotNull(returnedAppointmentList);
@@ -70,7 +68,6 @@ public class AppointmentServicesTest {
 
     @Test
     public void NumberOfAppointmentsShouldBeLessAfterDeletion() {
-
         appointmentService.deleteAppointment(306L);
         verify(appointmentRepository).deleteById(306L);
     }
@@ -89,10 +86,8 @@ public class AppointmentServicesTest {
     public void shouldReturnAppointmentGivenPatient() {
         Appointment appointment1 = utility.buildAppointment(34L,LocalDate.now() , LocalTime.now(),
                 LocalTime.now(),"aa",false);
-
         Patient patient1 = utility.buildPatientWithId(30L, 35, "male","Jack","io");
         patient1.setAppointments(Set.of(appointment1));
-
         when(appointmentRepository.findAppointmentsByPatientId(30L)).thenReturn(List.of(appointment1));
         List<AppointmentGetDto> returnedAppointment = appointmentService.findAppointmentsByPatient(30L);
         assertNotNull(returnedAppointment);
@@ -103,10 +98,8 @@ public class AppointmentServicesTest {
     public void shouldReturnAppointmentGivenDoctor() {
         Appointment appointment1 = utility.buildAppointment(34L,LocalDate.now() , LocalTime.now(),
                 LocalTime.now(),"aa",false);
-
         Doctor doctor1 = utility.buildDoctorWithId(30L, 35, "male","Jack","io");
         doctor1.setAppointments(Set.of(appointment1));
-
         when(appointmentRepository.findAppointmentsByDoctorId(30L)).thenReturn(List.of(appointment1));
         List<AppointmentGetDto> returnedAppointment = appointmentService.findAppointmentsByDoctor(30L);
         assertNotNull(returnedAppointment);
@@ -121,17 +114,13 @@ public class AppointmentServicesTest {
         LocalTime localTime2=LocalTime.of(14,25);
         LocalTime localTime3=LocalTime.of(14,25);
         LocalTime localTime4=LocalTime.of(14,25);
-
         Appointment appointment1 = utility.buildAppointment(34L,localDate1, localTime1,
                 localTime2,"aa",false);
         Appointment appointment2 = utility.buildAppointment(35L,localDate2, localTime3,
                 localTime4,"aa",false);
-
         Doctor doctor1 = utility.buildDoctorWithId(30L, 35, "male","Jack","io");
-
         doctor1.setAppointments(Set.of(appointment1));
         doctor1.setAppointments(Set.of(appointment2));
-
         when(appointmentRepository.findAppointmentsOfADoctorByDate(30L, localDate1)).
                 thenReturn(List.of(appointment1));
         List<AppointmentGetDto> returnedAppointment = appointmentService.
@@ -144,17 +133,13 @@ public class AppointmentServicesTest {
     public void shouldReturnAppointmentGivenPatientAndDate() {
         LocalDate localDate1=LocalDate.of(2020,5,12);
         LocalDate localDate2=LocalDate.of(2020,7,12);
-
         Appointment appointment1 = utility.buildAppointment(34L,localDate1, LocalTime.now(),
                 LocalTime.now(),"aa",false);
         Appointment appointment2 = utility.buildAppointment(35L,localDate2, LocalTime.now(),
                 LocalTime.now(),"aa",false);
-
         Patient patient1 = utility.buildPatientWithId(30L, 35, "male","Jack","io");
-
         patient1.setAppointments(Set.of(appointment1));
         patient1.setAppointments(Set.of(appointment2));
-
         when(appointmentRepository.findAppointmentsOfAPatientByDate(30L, localDate1)).
                 thenReturn(List.of(appointment1));
         List<AppointmentGetDto> returnedAppointment = appointmentService.
@@ -168,14 +153,12 @@ public class AppointmentServicesTest {
         LocalDate localDate1=LocalDate.of(2020,5,12);
         LocalDate localDate2=LocalDate.of(2020,6,12);
         LocalDate localDate3=LocalDate.of(2020,7,12);
-
         Appointment appointment1 = utility.buildAppointment(34L,localDate1 , LocalTime.now(),
                 LocalTime.now(),"aa",false);
         Appointment appointment2 = utility.buildAppointment(334L,localDate2 , LocalTime.now(),
                 LocalTime.now(),"aa",false);
         Appointment appointment3 = utility.buildAppointment(354L,localDate3 , LocalTime.now(),
                 LocalTime.now(),"aa",false);
-
         when(appointmentRepository.findAppointmentsByDate(localDate1)).thenReturn(List.of(appointment1));
         List<AppointmentGetDto> returnedAppointment = appointmentService.findAppointmentsByDate(localDate1);
         assertNotNull(returnedAppointment);

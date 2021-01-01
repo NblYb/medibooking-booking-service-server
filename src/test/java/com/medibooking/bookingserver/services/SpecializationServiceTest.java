@@ -45,7 +45,6 @@ public class SpecializationServiceTest {
     public void shouldReturnAccountListGivenAccountsExist() {
         Specialization specialization1 = utility.buildSpecialization(666L,"medicine");
         Specialization specialization2 = utility.buildSpecialization(777L,"pregnancy");
-
         when(specializationRepository.findAll()).thenReturn(List.of(specialization1, specialization2));
         List<SpecializationGetDto> returnedSpecializationList = specializationService.getAllSpe();
         assertNotNull(returnedSpecializationList);
