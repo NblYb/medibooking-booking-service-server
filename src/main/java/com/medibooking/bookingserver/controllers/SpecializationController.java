@@ -8,7 +8,6 @@ import com.medibooking.bookingserver.dtos.specialization.SpecializationPutDto;
 import com.medibooking.bookingserver.services.SpecializationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

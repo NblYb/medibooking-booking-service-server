@@ -2,7 +2,6 @@ package com.medibooking.bookingserver.controllers;
 
 import com.medibooking.bookingserver.dtos.appointment.AppointmentGetDto;
 import com.medibooking.bookingserver.dtos.appointment.AppointmentPostDto;
-import com.medibooking.bookingserver.dtos.appointment.AppointmentPutDto;
 import com.medibooking.bookingserver.services.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;

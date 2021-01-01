@@ -26,7 +26,6 @@ public class LanguageService {
     public LanguageGetDto createLanguage(LanguagePostDto languagePostDto) {
         Language language = languageMapper.toEntity(languagePostDto);
         languageRepository.save(language);
-
         return languageMapper.fromEntity(language);
     }
 }

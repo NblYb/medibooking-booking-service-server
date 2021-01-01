@@ -46,4 +46,7 @@ public class Doctor {
             inverseJoinColumns = @JoinColumn(name = "specialization_id"))
     private Set<Specialization> specializations;
 
+    @OneToMany(mappedBy = "doctor")
+    private Set<Appointment> appointments;
+
 }

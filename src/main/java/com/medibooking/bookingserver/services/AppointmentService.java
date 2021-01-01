@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.medibooking.bookingserver.dtos.appointment.AppointmentGetDto;
 import com.medibooking.bookingserver.dtos.appointment.AppointmentPostDto;
-import com.medibooking.bookingserver.dtos.appointment.AppointmentPutDto;
 import com.medibooking.bookingserver.entities.Appointment;
 import com.medibooking.bookingserver.entities.Doctor;
 import com.medibooking.bookingserver.entities.Patient;
@@ -73,13 +72,6 @@ public class AppointmentService {
         emailMessage.setDoctorLastName(doctor.getLastName());
         String emailJson = objectMapper.writeValueAsString(emailMessage);
         rabbitTemplate.convertAndSend("AppointmentEmail", emailJson);
-    }
-
-    public AppointmentGetDto modifyAppointment(Long appointmentId, AppointmentPutDto appointmentPutDto) {
-        Appointment appointment = new Appointment();
-        appointmentMapper.copy(appointmentPutDto, appointment);
-        appointment.setId(appointmentId);
-        return appointmentMapper.fromEntity(appointmentRepository.save(appointment));
     }
 
     public AppointmentGetDto cancelAppointment(Long appointmentId){

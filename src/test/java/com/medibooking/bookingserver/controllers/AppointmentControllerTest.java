@@ -51,6 +51,10 @@ public class AppointmentControllerTest {
     
     private String testEndingTime = "18:05:00";
 
+    private String testStartingTime = "17:50:00";
+
+    private String testEndingTime = "18:05:00";
+
     @Test
     @WithMockUser(roles = {"ADMIN"})
     public void ShouldReturnAppointmentListWhenGetAllAppointments() throws Exception {

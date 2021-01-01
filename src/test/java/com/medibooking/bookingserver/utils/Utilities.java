@@ -1,6 +1,5 @@
 package com.medibooking.bookingserver.utils;
 
-
 import com.medibooking.bookingserver.dtos.appointment.AppointmentGetDto;
 import com.medibooking.bookingserver.dtos.appointment.AppointmentPostDto;
 import com.medibooking.bookingserver.dtos.appointment.AppointmentPutDto;
@@ -8,15 +7,11 @@ import com.medibooking.bookingserver.dtos.doctor.DoctorGetDto;
 import com.medibooking.bookingserver.dtos.doctor.DoctorPostDto;
 import com.medibooking.bookingserver.dtos.doctor.DoctorPutDto;
 import com.medibooking.bookingserver.dtos.language.LanguageGetDto;
-import com.medibooking.bookingserver.dtos.language.LanguagePostDto;
-import com.medibooking.bookingserver.dtos.language.LanguagePutDto;
 import com.medibooking.bookingserver.dtos.patient.PatientGetDto;
 import com.medibooking.bookingserver.dtos.patient.PatientPostDto;
 import com.medibooking.bookingserver.dtos.patient.PatientPutDto;
 import com.medibooking.bookingserver.dtos.specialization.SpecializationGetDto;
-import com.medibooking.bookingserver.dtos.specialization.SpecializationPostDto;
-import com.medibooking.bookingserver.dtos.specialization.SpecializationPutDto;
-import com.medibooking.bookingserver.entities.Specialization;
+import com.medibooking.bookingserver.entities.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -206,20 +201,6 @@ public class Utilities {
         return languageGetDto;
     }
 
-    public LanguagePutDto buildLanguagePutDto (Long id,
-                                               String languageName){
-        LanguagePutDto languagePutDto = new LanguagePutDto();
-        languagePutDto.setId(id);
-        languagePutDto.setLanguageName(languageName);
-        return languagePutDto;
-    }
-
-    public LanguagePostDto buildLanguagePostDto (String languageName){
-        LanguagePostDto languagePostDto = new LanguagePostDto();
-        languagePostDto.setLanguageName(languageName);
-        return languagePostDto;
-    }
-
     public SpecializationGetDto buildSpecializationGetDto (Long id,
                                                       String languageName){
         SpecializationGetDto specializationGetDto = new SpecializationGetDto();
@@ -228,16 +209,77 @@ public class Utilities {
         return specializationGetDto;
     }
 
-    public SpecializationPostDto buildSpecializationPostDto (String languageName){
-        SpecializationPostDto specializationPostDto = new SpecializationPostDto();
-        specializationPostDto.setSpecializationName(languageName);
-        return specializationPostDto;
+    public Doctor buildDoctor(int age,
+                              String gender,
+                              String firstName,
+                              String lastName) {
+
+        Doctor doctor = new Doctor();
+        doctor.setGender(gender);
+        doctor.setAge(age);
+        doctor.setFirstName(firstName);
+        doctor.setLastName(lastName);
+        return doctor;
     }
-    public SpecializationPutDto buildSpecializationPutDto (Long id,
-                                                               String languageName){
-        SpecializationPutDto specializationPutDto = new SpecializationPutDto();
-        specializationPutDto.setId(id);
-        specializationPutDto.setSpecializationName(languageName);
-        return specializationPutDto;
+
+    public Language buildLanguage(String languageName) {
+
+        Language language = new Language();
+        language.setLanguageName(languageName);
+        return language;
+    }
+
+    public Patient buildPatientWithId(Long id,
+                                      int age,
+                                      String gender,
+                                      String firstName,
+                                      String lastName) {
+
+        Patient patient = new Patient();
+        patient.setId(id);
+        patient.setGender(gender);
+        patient.setAge(age);
+        patient.setFirstName(firstName);
+        patient.setLastName(lastName);
+        return patient;
+    }
+
+    public Doctor buildDoctorWithId(Long id,
+                                    int age,
+                                    String gender,
+                                    String firstName,
+                                    String lastName) {
+
+        Doctor doctor = new Doctor();
+        doctor.setId(id);
+        doctor.setGender(gender);
+        doctor.setAge(age);
+        doctor.setFirstName(firstName);
+        doctor.setLastName(lastName);
+        return doctor;
+    }
+
+    public Specialization buildSpecialization(Long id, String specialization_name) {
+
+        Specialization specialization = new Specialization();
+        specialization.setId(id);;
+        specialization.setSpecializationName(specialization_name);
+        return specialization;
+    }
+
+    public Appointment buildAppointment(Long id,
+                                        LocalDate date,
+                                        LocalTime startingTime,
+                                        LocalTime endingTime,
+                                        String notes,
+                                        Boolean isCancelled) {
+        Appointment appointment=new Appointment();
+        appointment.setId(id);
+        appointment.setDate(date);
+        appointment.setStartingTime(startingTime);
+        appointment.setEndingTime(endingTime);
+        appointment.setNotes(notes);
+        appointment.setIsCancelled(isCancelled);
+        return appointment;
     }
 }
